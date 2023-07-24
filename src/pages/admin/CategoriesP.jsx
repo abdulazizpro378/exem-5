@@ -2,6 +2,7 @@ import { Image, Input, Pagination, Spin } from "antd";
 // import Search from "antd/es/input/Search";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { IMG_URL } from "../../const";
 import { request } from "../../server/request";
 
 const CategoryP = () => {
@@ -90,7 +91,12 @@ console.log(categorys);
         <div key={res._id}>
           <div className="box">
             <div className="box-left">
-              <Image src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png" />
+            <Image
+                  src={
+                    IMG_URL + res.photo._id + "." + res.photo.name.split(".")[1]
+                  }
+                  alt="Photo"
+                />
             </div>
             <div className="box-right">
               <p className="p-4">{res.user.first_name}</p>
