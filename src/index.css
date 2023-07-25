@@ -55,7 +55,8 @@ main {
   height: auto;
   text-align: center;
 }
-.loginpage input, .input-account {
+.loginpage input,
+.input-account {
   width: 100%;
   height: 60px;
   padding: 24px;
@@ -64,7 +65,8 @@ main {
   border-radius: 5px;
   margin-top: 15px;
 }
-.loginpage .button,.button-account {
+.loginpage .button,
+.button-account {
   width: 100%;
   height: 54px;
   border: none;
@@ -448,11 +450,11 @@ main {
   max-width: 837px;
 }
 
-.btn-succes{
+.btn-succes {
   position: absolute;
   right: 109px;
   top: 160px;
-  background: var(--yellow, #FFD050);
+  background: var(--yellow, #ffd050);
   border-radius: 5px;
   color: var(--black, #232536);
   font-size: 18px;
@@ -461,20 +463,27 @@ main {
   line-height: 24px;
 }
 
-.search-my-pos{
+.search-my-pos {
   position: relative;
 }
 
-
-.cart{
+.cart {
   max-width: 200px;
   height: 300px;
-  
 }
 
-
-.carucel img{
+.carucel img {
   width: 100%;
   height: 300px;
   object-fit: cover;
+}
+
+.postcard{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.postcard img {
+  width: 200px;
 }
