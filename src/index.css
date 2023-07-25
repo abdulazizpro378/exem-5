@@ -487,3 +487,20 @@ main {
 .postcard img {
   width: 200px;
 }
+
+.example {
+
+  height: 100vh;
+  width: 100vw;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: blue;
+  z-index: 9;
+  position: relative;
+  left: 0;
+  top: -95px;
+  background: white;
+  border-radius: 4px;
+}

@@ -1,4 +1,4 @@
-import { Image } from "antd";
+import { Image, Spin } from "antd";
 import { Fragment, useEffect, useState } from "react";
 import { Card } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
@@ -10,6 +10,8 @@ const HomeP = () => {
   const [posts, setPosts] = useState([]);
   const navigate = useNavigate();
   const [catigory, setCatigory] = useState([]);
+  const [isLoadingPosts, setIsLoadingPosts] = useState(true);
+  const [isLoadingCatigory, setIsLoadingCatigory] = useState(true);
 
   useEffect(() => {
     async function getPosts() {
@@ -18,6 +20,8 @@ const HomeP = () => {
         setPosts(data);
       } catch (err) {
         console.log(err.response);
+      } finally {
+        setIsLoadingPosts(false); // Postlar yuklandi
       }
     }
     getPosts();
@@ -34,6 +38,8 @@ const HomeP = () => {
         setCatigory(category1);
       } catch (err) {
         console.log(err.response);
+      } finally {
+        setIsLoadingCatigory(false); // Kategoriyalar yuklandi
       }
     }
     getPosts();
@@ -128,25 +134,35 @@ const HomeP = () => {
   return (
     <Fragment>
       <section id="home">
-        <div className="container">
-          <Slider {...settings1}>
-            {posts.map((pr) => (
-              <div key={pr}>
-                <div className="home-container">
-                  <h4>{pr.title}</h4>
-                  <h1>Step-by-step guide to choosing great font pairs</h1>
-                  <h5>
-                    By <span> {pr.title}</span> | {pr.updatedAt.split("T")[0]}
-                  </h5>
-                  <p>{pr.description}</p>
+        <div  >
+          {isLoadingPosts || isLoadingCatigory ? (
+            <div  className="example">
 
-                  <div className="btn">
-                    <button>Read Mor </button>
+              <Spin size="large" />
+            </div>
+          ) : (
+            <>
+              <Slider {...settings1} className="container" >
+                {posts.map((pr) => (
+                  <div key={pr}>
+                    <div className="home-container">
+                      <h4>{pr.title}</h4>
+                      <h1>Step-by-step guide to choosing great font pairs</h1>
+                      <h5>
+                        By <span> {pr.title}</span> |{" "}
+                        {pr.updatedAt.split("T")[0]}
+                      </h5>
+                      <p>{pr.description}</p>
+
+                      <div className="btn">
+                        <button>Read Mor </button>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            ))}
-          </Slider>
+                ))}
+              </Slider>
+            </>
+          )}
         </div>
       </section>
       <div className="carucel container">
@@ -155,7 +171,7 @@ const HomeP = () => {
         <Slider {...settings}>
           {posts.map((pr) => (
             <div key={pr} onClick={() => getPosts(pr._id)}>
-              <Card  style={{ width: "18rem" }} className="cart line-clamp">
+              <Card style={{ width: "18rem" }} className="cart line-clamp">
                 <Image
                   src={
                     IMG_URL + pr.photo._id + "." + pr.photo.name.split(".")[1]
