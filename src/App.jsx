@@ -35,14 +35,14 @@ function App() {
           {isAuthenticated && (
             <Fragment>
               <Route path="my-posts" element={<MyPostsP />} />
-              <Route path="account" element={<AccountP />} />
+              <Route path="accountp" element={<AccountP />} />
             </Fragment>
           )}
         </Route>
         {isAuthenticated && (
           <Fragment>
             <Route path="/" element={<AdminLayout />}>
-              <Route path="dashboard" element={<DashboardP />} />
+              <Route path="account" element={<DashboardP />} />
               <Route path="users" element={<UsersP />} />
               <Route path="categories/:id" element={<CategoriesP />} />
               <Route path="all-posts" element={<AllPosts />} />
@@ -56,3 +56,6 @@ function App() {
 }
 
 export default App;
+
+
+// accound dashboard😎

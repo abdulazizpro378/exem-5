@@ -1,11 +1,10 @@
-
-
 import { useCallback, useEffect, useState } from "react";
 import { Button, Form, Input, Modal, Table, Select } from "antd";
 import { request } from "../../server/request";
 // import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { format } from "date-fns";
+import { Link } from "react-router-dom";
 const { TextArea } = Input;
 
 const provinceData = [
@@ -79,21 +78,10 @@ const MyPostsP = () => {
     }
   };
 
-
-
   const addTeacher = () => {
     showModal();
     setSelected(null);
   };
-  // function deleteTeacher(id) {
-  //   confirm({
-  //     title: "Do you Want to delete this teacher?",
-  //     onOk: async () => {
-  //       await request.delete(`teacher/${id}`);
-  //       getPost();
-  //     },
-  //   });
-  // }
 
   async function editTeacher(id) {
     try {
@@ -105,9 +93,6 @@ const MyPostsP = () => {
       console.log(err);
     }
   }
- 
-
-
 
   function deleteTeacher(id) {
     Modal.confirm({
@@ -123,7 +108,7 @@ const MyPostsP = () => {
     });
   }
 
-console.log(mypost);
+  console.log(mypost);
   console.log(uplodImg);
   return (
     <>
@@ -151,17 +136,10 @@ console.log(mypost);
                     className="h1 text-center"
                     id="pageHeaderTitle"
                   >
-                    My Cards Dark
+                    Free
                   </h1>
                   {mypost.map((pr, index) => (
                     <div key={index} className="postcard dark blue">
-                      <a className="postcard__img_link" href="#">
-                        <img
-                          className="postcard__img"
-                          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsVeDqqNBxYldoP9rHXJuGmtvKMP8OoI1sKG4-wX5eKQ&s"
-                          alt="Image Title"
-                        />
-                      </a>
                       <div className="postcard__text">
                         <h1 className="postcard__title blue">
                           <p>{pr.title}</p>
@@ -199,6 +177,13 @@ console.log(mypost);
                           </Button>
                         </div>
                       </div>
+                      <Link className="postcard__img_link" href="#">
+                        <img
+                          className="postcard__img"
+                          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsVeDqqNBxYldoP9rHXJuGmtvKMP8OoI1sKG4-wX5eKQ&s"
+                          alt="Image Title"
+                        />
+                      </Link>
                     </div>
                   ))}
                 </div>
@@ -236,8 +221,7 @@ console.log(mypost);
               {
                 required: true,
 
-
-message: "Please fill this field !",
+                message: "Please fill this field !",
               },
             ]}
             name="title"
