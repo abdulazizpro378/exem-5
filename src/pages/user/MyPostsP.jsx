@@ -62,7 +62,7 @@ const MyPostsP = () => {
       let values = await form.validateFields();
       values.tags = ["man", "fashion"];
       values.photo = uplodImg;
-      // Set the "photo" field to the URL value
+  
 
       console.log(values);
       if (selectedPost) {
