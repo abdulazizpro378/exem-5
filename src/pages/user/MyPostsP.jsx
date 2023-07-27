@@ -1,10 +1,11 @@
 import { useCallback, useEffect, useState } from "react";
-import { Button, Form, Input, Modal, Table, Select } from "antd";
+import { Button, Form, Input, Modal, Table, Select, Image } from "antd";
 import { request } from "../../server/request";
 // import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { format } from "date-fns";
 import { Link } from "react-router-dom";
+import { IMG_URL } from "../../const";
 const { TextArea } = Input;
 
 const provinceData = [
@@ -62,7 +63,6 @@ const MyPostsP = () => {
       let values = await form.validateFields();
       values.tags = ["man", "fashion"];
       values.photo = uplodImg;
-  
 
       console.log(values);
       if (selectedPost) {
@@ -131,22 +131,25 @@ const MyPostsP = () => {
             <section>
               <section className="dark">
                 <div className="container py-4">
-                  <h1
-                    style={{ marginTop: "100px" }}
-                    className="h1 text-center"
-                    id="pageHeaderTitle"
-                  >
-                    Free
-                  </h1>
                   {mypost.map((pr, index) => (
                     <div key={index} className="postcard dark blue">
                       <div className="postcard__text">
+                        <Link className="postcard__img_link" href="#">
+                          <Image
+                            src={
+                              IMG_URL +
+                              pr.photo._id +
+                              "." +
+                              pr.photo.name.split(".")[1]
+                            }
+                            alt="Photo"
+                          />
+                        </Link>
                         <h1 className="postcard__title blue">
                           <p>{pr.title}</p>
                         </h1>
                         <div className="postcard__subtitle small">
                           <time>
-                            {/* <CalendarMonthIcon style={{ marginRight: "5px" }} /> */}
                             {format(new Date(pr.createdAt), "MMM d, yyyy")}
                           </time>
                         </div>
@@ -177,13 +180,6 @@ const MyPostsP = () => {
                           </Button>
                         </div>
                       </div>
-                      <Link className="postcard__img_link" href="#">
-                        <img
-                          className="postcard__img"
-                          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsVeDqqNBxYldoP9rHXJuGmtvKMP8OoI1sKG4-wX5eKQ&s"
-                          alt="Image Title"
-                        />
-                      </Link>
                     </div>
                   ))}
                 </div>
@@ -205,7 +201,7 @@ const MyPostsP = () => {
             title: selectedPost ? selectedPost.title : "",
             category: selectedPost
               ? selectedPost.category._id
-              : provinceData[0], // Set a default value from provinceData
+              : provinceData[0],
             photo: {
               url: selectedPost ? selectedPost.photo : "",
               name: selectedPost ? selectedPost.name : "",
