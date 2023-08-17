@@ -134,15 +134,14 @@ const HomeP = () => {
   return (
     <Fragment>
       <section id="home">
-        <div  >
+        <div>
           {isLoadingPosts || isLoadingCatigory ? (
-            <div  className="example">
-
+            <div className="example">
               <Spin size="large" />
             </div>
           ) : (
             <>
-              <Slider {...settings1} className="container" >
+              <Slider {...settings1} className="container">
                 {posts.map((pr) => (
                   <div key={pr}>
                     <div className="home-container">
@@ -172,19 +171,25 @@ const HomeP = () => {
           {posts.map((pr) => (
             <div key={pr} onClick={() => getPosts(pr._id)}>
               <Card style={{ width: "18rem" }} className="cart line-clamp">
-                <Image
-                  src={
-                    // IMG_URL +
-                    // pr.photo._id +
-                    // "." +
-                    // pr.photo.name.split(".")[1]
-                    'https://images.unsplash.com/photo-1508919801845-fc2ae1bc2a28?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aW1nfGVufDB8fDB8fHww&w=1000&q=80'
-                  }
-                  alt="Photo"
-                />
+             
+                {pr.photo ? (
+                  <Image
+                    src={`${IMG_URL}${pr.photo._id}.${
+                      pr.photo.name.split(".")[1]
+                    }`}
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = "https://picsum.photos/1000/1000";
+                    }}
+                    width="220px"
+                  />
+                ) : (
+                  <div>eror image </div>
+                )}
                 <Card.Body>
-                  <p>{pr.updatedAt.split("T")[0]}</p>
-                  <Card.Title>{pr.title}</Card.Title>
+                  <p>{pr?.updatedAt.split("T")[0]}</p>
+                  
+                  <Card.Title>{pr.title ? pr.title : " lorem  der"}</Card.Title>
                   <Card.Text>{pr.description}</Card.Text>
                 </Card.Body>
               </Card>
@@ -200,7 +205,7 @@ const HomeP = () => {
           </div>
 
           <div className="contact-row">
-            {catigory.slice(0,4).map((pr, i) => (
+            {catigory.slice(0, 4).map((pr, i) => (
               <div key={i}>
                 <div
                   className="contact-card"
