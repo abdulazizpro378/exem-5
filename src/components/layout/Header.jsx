@@ -62,7 +62,7 @@ const Header = () => {
           {/* <NavLink className="nav__brand">
             <img src={logo2} alt="logo" />
           </NavLink> */}
-           <Link
+          <Link
             to={isAuthenticated ? "/my-posts" : "/"}
             style={{
               color: "white",
@@ -79,7 +79,7 @@ const Header = () => {
                 Home
               </NavLink>
             </li>
-           
+
             <li className="nav__item">
               <NavLink to="posts" className="nav__link">
                 Blog
@@ -108,9 +108,26 @@ const Header = () => {
               </Link>
             </div>
             <div className="logout">
-              <Link to={"login"}>
-                <LoginOutlined style={{ color: "white" }} />
+              <Link
+                style={{ backgroundColor: "transparent", border: "none" }}
+                to={"login"}
+              >
+                <LoginOutlined
+                  style={{
+                    color: "white",
+                    fontSize: "30px",
+                    fontWeight: "bold",
+                  }}
+                />
               </Link>
+              {/* <button
+                style={{ backgroundColor: "transparent", border: "none" }}
+                onClick={logOutsayt}
+              >
+                <LogoutIcon
+                  sx={{ fontSize: "30px", color: "white", fontWeight: "bold" }}
+                />
+              </button> */}
             </div>
             <div className={`app ${darkMode ? "dark" : ""}`}>
               <button className="btn-dark" onClick={toggleDarkMode}>

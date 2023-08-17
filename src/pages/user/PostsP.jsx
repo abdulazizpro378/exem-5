@@ -1,4 +1,4 @@
-import { Image, Input, Pagination } from "antd";
+import {  Input, Pagination } from "antd";
 import { Fragment, useCallback, useEffect, useState } from "react";
 import { IMG_URL } from "../../const";
 
@@ -62,17 +62,25 @@ const PostsP = () => {
             <div key={res._id}>
               <div className="box">
                 <div className="box-left">
-                <Image
-                  src={
-                    IMG_URL + res.photo._id + "." + res.photo.name.split(".")[1]
-                  }
-                  alt="Photo"
-                />
+                {res.photo ? (
+                          <img
+                            src={`${IMG_URL}${res.photo._id}.${
+                              res.photo.name.split(".")[1]
+                            }`}
+                            onError={(e) => {
+                              e.target.onerror = null;
+                              e.target.src = "https://picsum.photos/1000/1000";
+                            }}
+                            width='330px'
+                          />
+                        ) : (
+                          <div>eror image  </div>
+                        )}
                 </div>
                 <div className="box-right">
-                  <p className="p-4">{res.category.name}</p>
+                  {/* <p className="p-4">{res?.category.name}</p> */}
                   <h3>{res.title}</h3>
-                  <span>{res.updatedAt.split("T")[0]}</span>
+                  <span>{res?.updatedAt.split("T")[0]}</span>
                   <p className="p-5">{res.description}</p>
                 </div>
               </div>

@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { Button, Form, Input, Modal, Table, Select, Image } from "antd";
 import { request } from "../../server/request";
 // import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
-import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
+// import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { format } from "date-fns";
 import { Link } from "react-router-dom";
 import { IMG_URL } from "../../const";
@@ -157,26 +157,30 @@ const MyPostsP = () => {
                         <div className="postcard__preview-txt">
                           {pr.description}
                         </div>
-                        <div className="postcard__tagbox">
+                        <div className="postcard__tagbox d-flex gap-2 my-2">
                           <Button
                             onClick={() => editTeacher(pr._id)}
-                            className="tag__item"
+                            className="tag__item btn btn-primary"
                           >
-                            <EditOutlined
+                            {/* <EditOutlined
                               style={{
                                 fontSize: "26px",
                                 color: "green",
                                 gap: "15px",
                               }}
-                            />
+
+                            /> */}
+
+                            Edit
                           </Button>
                           <Button
                             onClick={() => deleteTeacher(pr._id)}
-                            className="tag__item"
+                            className="tag__item btn btn-danger"
                           >
-                            <DeleteOutlined
+                            {/* <DeleteOutlined
                               style={{ fontSize: "26px", color: "red" }}
-                            />
+                            /> */}
+                            Delete
                           </Button>
                         </div>
                       </div>

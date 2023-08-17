@@ -1,9 +1,5 @@
 /* Googles Font Link */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
-body {
-  font-family: "Poppins", sans-serif !important;
-}
-
 /* Responsive Table Style */
 .responsive-table {
   background-color: #fefefe;
@@ -29,11 +25,6 @@ body {
     grid-template-columns: 1fr 2fr 1fr;
   }
 }
-.responsive-table__row th,
-.responsive-table__row td {
-  padding: 1rem;
-  font-family: "Poppins", sans-serif !important;
-}
 .responsive-table__head {
   background-color: #e1e8f2;
 }
@@ -50,25 +41,14 @@ body {
 }
 .responsive-table__body .responsive-table__row {
   transition: 0.1s linear;
-  transition-property: color, background;
 }
 .responsive-table__body .responsive-table__row:last-child {
   border-bottom: none;
-}
-.responsive-table__body .responsive-table__row:hover {
-  color: #ffffff;
-  background-color: #fb4f83;
 }
 .responsive-table__body__text {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  font-family: "Poppins", sans-serif !important;
-}
-.responsive-table__body__text::before {
-  margin-right: 1rem;
-  font-weight: 600;
-  text-transform: capitalize;
 }
 @media (max-width: 991px) {
   .responsive-table__body__text::before {
@@ -120,10 +100,11 @@ body {
 
 /* SVG User Icon Style */
 .user-icon {
-  width: 100%;
-  max-width: 4rem;
-  height: auto;
-  margin-right: 1rem;
+  display: none;
+}
+
+svg {
+  display: none !important;
 }
 
 .ant-card-meta-description {

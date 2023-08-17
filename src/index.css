@@ -513,7 +513,7 @@ main {
 /* logout style */
 
 .logout {
-  display: none;
+  display: block;
 }
 
 /* my-post */
