@@ -3,7 +3,7 @@ import { useContext, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { LoginOutlined } from "@ant-design/icons";
-import logo2 from "../../assets/images/logo.svg";
+// import logo2 from "../../assets/images/logo.svg";
 import "./Header.scss";
 
 const Header = () => {
@@ -59,20 +59,27 @@ const Header = () => {
     <header className="header">
       <div className="container">
         <nav className="nav  ">
-          <NavLink className="nav__brand">
+          {/* <NavLink className="nav__brand">
             <img src={logo2} alt="logo" />
-          </NavLink>
+          </NavLink> */}
+           <Link
+            to={isAuthenticated ? "/my-posts" : "/"}
+            style={{
+              color: "white",
+              fontWeight: "bold",
+              fontSize: "28px",
+              textDecoration: "none",
+            }}
+          >
+            {isAuthenticated ? "{ My blogs" : "{ Najot News "}
+          </Link>
           <ul className={active}>
             <li className="nav__item">
               <NavLink to={`/`} className="nav__link">
                 Home
               </NavLink>
             </li>
-            <li className="nav__item">
-              <NavLink to={`my-posts`} className="nav__link">
-                My-post
-              </NavLink>
-            </li>
+           
             <li className="nav__item">
               <NavLink to="posts" className="nav__link">
                 Blog
