@@ -1,9 +1,9 @@
+
+
 const AllPosts = () => {
+  return (
+    <div>AllPosts</div>
+  )
+}
 
-  
-  <section>
-    salom
-  </section>
-};
-
-export default AllPosts;
+export default AllPosts

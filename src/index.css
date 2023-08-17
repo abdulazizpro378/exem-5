@@ -478,7 +478,7 @@ main {
   object-fit: cover;
 }
 
-.postcard{
+.postcard {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -495,7 +495,6 @@ main {
 }
 
 .example {
-
   height: 100vh;
   width: 100vw;
 
@@ -504,10 +503,41 @@ main {
   justify-content: center;
   color: blue;
   z-index: 9;
-  /* padding-bottom: 500px; */
+
   position: relative;
   left: 0;
   top: -110px;
-  background: white;
   border-radius: 4px;
+}
+
+/* logout style */
+
+.logout {
+  display: none;
+}
+
+/* my-post */
+
+.my-post {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+}
+
+@media (max-width: 600px) {
+  .logout {
+    display: block;
+    width: 20px;
+    height: 50px;
+  }
+
+  .logout svg {
+    height: 100px !important;
+    font-size: 30px;
+  }
+  .my-post {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 20px;
+  }
 }

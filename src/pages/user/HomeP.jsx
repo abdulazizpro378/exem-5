@@ -174,7 +174,11 @@ const HomeP = () => {
               <Card style={{ width: "18rem" }} className="cart line-clamp">
                 <Image
                   src={
-                    IMG_URL + pr.photo._id + "." + pr.photo.name.split(".")[1]
+                    // IMG_URL +
+                    // pr.photo._id +
+                    // "." +
+                    // pr.photo.name.split(".")[1]
+                    'https://images.unsplash.com/photo-1508919801845-fc2ae1bc2a28?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aW1nfGVufDB8fDB8fHww&w=1000&q=80'
                   }
                   alt="Photo"
                 />
@@ -196,7 +200,7 @@ const HomeP = () => {
           </div>
 
           <div className="contact-row">
-            {catigory.map((pr, i) => (
+            {catigory.slice(0,4).map((pr, i) => (
               <div key={i}>
                 <div
                   className="contact-card"

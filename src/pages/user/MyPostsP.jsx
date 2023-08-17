@@ -130,7 +130,7 @@ const MyPostsP = () => {
             </div>
             <section>
               <section className="dark">
-                <div className="container py-4">
+                <div className="container my-post py-4">
                   {mypost.map((pr, index) => (
                     <div key={index} className="postcard dark blue">
                       <div className="postcard__text">

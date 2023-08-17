@@ -2,13 +2,13 @@ import { Button } from "antd";
 import { useContext, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
-
+import { LoginOutlined } from "@ant-design/icons";
 import logo2 from "../../assets/images/logo.svg";
 import "./Header.scss";
 
 const Header = () => {
   const navigate = useNavigate();
-  const { isAuthenticated} = useContext(AuthContext);
+  const { isAuthenticated } = useContext(AuthContext);
   const [active, setActive] = useState("nav__menu");
   const [icon, setIcon] = useState("nav__toggler");
   const [loadings, setLoadings] = useState([]);
@@ -85,7 +85,7 @@ const Header = () => {
             </li>
             <li className="nav__item">
               <NavLink to="register" className="nav__link">
-                Register    
+                Register
               </NavLink>
             </li>
             <div className="login">
@@ -98,6 +98,11 @@ const Header = () => {
                 >
                   {isAuthenticated ? "Account" : "Login"}
                 </Button>
+              </Link>
+            </div>
+            <div className="logout">
+              <Link to={"login"}>
+                <LoginOutlined style={{ color: "white" }} />
               </Link>
             </div>
             <div className={`app ${darkMode ? "dark" : ""}`}>
