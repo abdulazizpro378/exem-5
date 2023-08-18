@@ -14,6 +14,7 @@ import MyPostsP from "./pages/user/MyPostsP";
 import AccountP from "./pages/user/AccountP";
 import NotFoundP from "./pages/NotFoundP";
 
+import BlogPost from "./pages/user/BlogPost";
 
 import { AuthContext } from "./context/AuthContext";
 import DashboardPage from "./pages/admin/DashboardPage";
@@ -32,6 +33,7 @@ function App() {
           <Route path="login" element={<LoginP />} />
           <Route path="register" element={<RegisterP />} />
           <Route path="posts" element={<PostsP />} />
+          <Route path="blogpost/:id" element={<BlogPost />} />
           <Route path="posts/:id" element={<PostP />} />
           {isAuthenticated && (
             <Fragment>

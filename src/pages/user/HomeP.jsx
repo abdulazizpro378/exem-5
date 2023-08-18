@@ -123,7 +123,7 @@ const HomeP = () => {
 
   const getCategoryId = (categoryId) => {
     setCatigory(categoryId);
-    navigate(`/categories/${categoryId}`);
+    navigate(`/blogpost/${categoryId}`);
   };
 
   const getPosts = (postsId) => {
